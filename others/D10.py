@@ -1,18 +1,20 @@
 #
-# from datetime import datetime as dt
-# import datetime
+from datetime import datetime as dt
+import datetime
 # # Implement a function that receives a float number that represents
 # # the amount of seconds as argument, and returns a formatted string that displays
 # # the amount of seconds in the format: hh:mm:ss.
 # # Hint: use datetime.timedelta for one-liner code
 # #
 #
-# val = float(input("insert seconds "))
-# def watch():
-#     ret_val = datetime.timedelta(seconds=val)
-#     return str(ret_val)
-#
-# print(watch())
+val = float(input("insert seconds "))
+def watch():
+    ret_val = datetime.timedelta(seconds=val)
+    return str(ret_val)
+
+print(watch())
+
+
 #
 #
 # # Implement a function that gets a string that represents datetime in the
