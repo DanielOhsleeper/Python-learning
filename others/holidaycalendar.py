@@ -69,13 +69,15 @@ class CountryCalendar:
                       , end: datetime.time):
 
         count_hours = 0
-        d = datetime.timedelta(days=1)
-        while from_date <= to_date:
-            if from_date.isoweekday() <= 5:
-                work_time = end - start
-                count_hours += work_time
-                from_date += d
-            return count_hours
+        work_time = end.hour - start.hour
+        print(type(work_time))
+        # d = datetime.timedelta(days=1)
+        # while from_date <= to_date:
+        #     count_hours += work_time
+        #     from_date += d
+        #     return count_hours
+
+
 
 
 if __name__ == '__main__':
@@ -91,7 +93,14 @@ print(cc.work_days())
 print(cc.year())
 print(cc.total_working_days(datetime.date(2023, 1, 1), datetime.date(2023, 2, 24)))
 print(cc.total_vacation_days(datetime.date(2023, 1, 1), datetime.date(2023, 2, 24)))
-print(cc.working_hours(datetime.date(2023, 1, 1), datetime.date(2023, 2, 24), start=datetime.datetime.strptime("09:00", "%H:%M"),
-                       end=datetime.datetime.strptime("19:00", "%H:%M")))
+print(cc.working_hours(datetime.date(2023, 1, 1), datetime.date(2023, 2, 24), datetime.datetime("19:00", "%H:%M"),
+                       datetime.datetime("19:00", "%H:%M")))
+
+
+
+
+
+
+
 
 
