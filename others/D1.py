@@ -1,32 +1,42 @@
 import csv
-import os
+import datetime
 
-count = 0
-names = []
-file_path = 'C:/Users/ohsle/Downloads/'
+def new_csv(csv_open):
+    year_info = {}
+    apple_info = "AAPL.csv"
+    with open(apple_info, "r") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            year = datetime.datetime.strptime(row["Date"], "%d-%m-%Y").year
+            if year not in year_info:
+                year_info[year] = {
+                    "Info": {
+                        "Avg Price": 0,
+                        "Min Price": 0,
+                        "Max Price": 0,
+                        "Avg Volume": 0,
+                    }
+                }
+                year_info[year]["Info"]["Avg Price"] += float(row["Low"]) + float(row["High"]) / 2
+                year_info[year]["Info"]["Min Price"] += float(row["Low"])
+                year_info[year]["Info"]["Max Price"] += float(row["High"])
+                year_info[year]["Info"]["Max Price"] += float(row["High"])
+                year_info[year]["Info"]["Avg Volume"] += int(row["Volume"])
 
-def search(count):
-    for roots, dirs, files in os.walk(file_path):
-        for file in files:
-            if file.endswith("csv"):
-                count += 1
-                file_split = file.split(".")
-                names.append(file_split[0])
-                print(file_split[0])
-        print(f"Amount of csv files {count} in {file_path}")
-        print(names)
+    with open(csv_open, "w", newline="") as w:
+        fieldnames = ["Year", "Avg Price", "Min Price", "Max Price", "Avg Volume"]
+        writer = csv.DictWriter(w, fieldnames=fieldnames)
+        writer.writeheader()
+        for year, info in year_info.items():
+            writer.writerow({
+                                "Year": year,
+                                "Avg Price": info["Info"]["Avg Price"],
+                                "Min Price": info["Info"]["Min Price"],
+                                "Max Price": info["Info"]["Max Price"],
+                                "Avg Volume": info["Info"]["Avg Volume"]
+
+            })
 
 
-def count_data(file_path):
-    rowcount = 0
-    for name in names:
-        with open(f"{file_path}{name}.csv", "r") as f:
-            reader = csv.reader(f)
-            for row in f:
-                rowcount += 1
-        print(f"FileName: {name}, Rows: {rowcount}")
-        print(f"FileName: {name}, Columns: {len(row.split(','))}")
+new_csv("new_f.csv")
 
-
-search(count)
-count_data(file_path)
