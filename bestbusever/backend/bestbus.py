@@ -2,6 +2,7 @@ from bestbusever.backend.bus_route import BusRoute
 
 
 class BestBusCompany:
+
     def __init__(self):
         self._routes: dict[int, BusRoute] = {}
 
@@ -11,6 +12,9 @@ class BestBusCompany:
         new_route = BusRoute(line_number, origin, destination, list_of_stops)
         self._routes[line_number] = new_route
 
+
+
     def __str__(self):
-        return "Best Bus Company"
+        return f"{str(self._routes)}"
+
 

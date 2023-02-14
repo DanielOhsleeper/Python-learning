@@ -1,4 +1,5 @@
-from bestbusever.backend.bestbus import BestBusCompany
+from bestbusever.backend import bestbus
+from bestbusever.backend.bestbus import*
 from bestbusever.frontend.menu import Menu
 
 if __name__ == '__main__':
@@ -19,7 +20,9 @@ if __name__ == '__main__':
                 line_number = Menu.get_line_number()
                 origin = Menu.get_origin() # Implement this function in Menu
                 destination = Menu.get_destination() # Implement this function in Menu
-                list_of_stops = Menu.get_list_of_stops() # Implement this function in Menu
+                list_of_stops = Menu.get_list_stop() # Implement this function in Menu
+                print(best_bus)
+                print(list_of_stops)
                 try:
                     best_bus.add_bus_route(line_number, origin, destination, list_of_stops) # Implement this function in Menu
                     # break
@@ -27,3 +30,4 @@ if __name__ == '__main__':
                     print(e)
             case 2:
                 pass
+

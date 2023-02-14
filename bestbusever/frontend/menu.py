@@ -18,3 +18,18 @@ class Menu:
     def get_line_number():
         return int(input("Please enter the line number: ").strip())
 
+
+    @staticmethod
+    def get_origin():
+        return str(input("Please enter origin: "))
+
+    @staticmethod
+    def get_list_stop():
+        return input("Please insert stop stations separated by comma's: ")
+
+    @staticmethod
+    def get_destination():
+        return str(input("Please insert destination stop: "))
+
+
+
