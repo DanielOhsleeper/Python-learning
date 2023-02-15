@@ -9,7 +9,9 @@ class BusRoute:
         self._list_of_stops = list_of_stops
         self._scheduled_rides: list[ScheduledRide] = []
 
-
-
-
-
+    def __repr__(self):
+        return f"Line number: {self._line_number}\n"\
+               f"Origin: {self._origin}\n" \
+               f"Destination: {self._destination}\n" \
+               f"List of stops: {self._list_of_stops}\n" \
+               f"Rides: {self._scheduled_rides}"

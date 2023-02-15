@@ -1,33 +1,70 @@
-from bestbusever.backend import bestbus
 from bestbusever.backend.bestbus import*
+from bestbusever.backend.scheduled_ride import ScheduledRide
 from bestbusever.frontend.menu import Menu
 
 if __name__ == '__main__':
     role = Menu.main_menu()
     best_bus = BestBusCompany()
-    if role == 1:
-        action = Menu.passenger_menu()
-        match action:
-            case 1:
-                print("I am in search route action")
-            case 2:
-                pass
-    elif role == 2:
-        action = Menu.manager_menu()
-        match action:
-            case 1:
-                print("Adding a new route")
-                line_number = Menu.get_line_number()
-                origin = Menu.get_origin() # Implement this function in Menu
-                destination = Menu.get_destination() # Implement this function in Menu
-                list_of_stops = Menu.get_list_stop() # Implement this function in Menu
-                print(best_bus)
-                print(list_of_stops)
-                try:
-                    best_bus.add_bus_route(line_number, origin, destination, list_of_stops) # Implement this function in Menu
-                    # break
-                except Exception as e:
-                    print(e)
-            case 2:
-                pass
+    scheduled = ScheduledRide("1", "1", "Vova")
+    while True:
+        if role == 1:
+            action = Menu.passenger_menu()
+            match action:
+                case 1:
+                    print("Searching Route")
+                    sc = scheduled.add_scheduled_ride("1", "1", "Vova")
+                    print(sc)
+                case 2:
+                    print("Reporting Delay")
+                case 3:
+                    print("Exiting")
+                    break
+        elif role == 2:
+            action = Menu.manager_menu()
+            match action:
+                case 1:
+                    print("Adding a new route")
+                    line_number = Menu.get_line_number()
+                    origin = Menu.get_origin()
+                    destination = Menu.get_destination()
+                    list_of_stops = Menu.get_list_stop()
+                    try:
+                        new_route = best_bus.start_route(line_number, origin, destination, list_of_stops)
+                    except Exception as e:
+                        print(e)
+                    print(best_bus)
+                case 2:
+                    print("Deleting Route by Line number: ")
+                    delete = Menu.delete_route()
+                    ask = input("Are you sure? y/n ")
+                    if "y" in ask:
+                        new_route = best_bus.delete_ride(delete)
+                        print(best_bus)
+                    if "n" in ask:
+                        continue
+                case 3:
+                    print("Updating Route")
+                    line_to_update = Menu.line_to_update()
+                    try:
+                        update_val = Menu.update_route()
+                        if "1" in update_val:
+                            new_origin = Menu.get_origin()
+                            new_route = best_bus.update_route_info(line_number, new_origin, destination, list_of_stops)
+                        if "2" in update_val:
+                            new_destination = Menu.get_destination()
+                            new_route = best_bus.update_route_info(line_number, origin, new_destination, list_of_stops)
+                        if "3" in update_val:
+                            new_list_of_stops = Menu.get_list_stop()
+                            new_route = best_bus.update_route_info(line_number, origin, destination, new_list_of_stops)
+                        print(new_route)
+                    except Exception as e:
+                        print(e)
+                case 4:
+                    print("Adding Scheduled Ride")
+                case 5:
+                    print("Exiting")
+                    break
+
+
+
 

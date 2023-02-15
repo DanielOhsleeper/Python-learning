@@ -6,12 +6,19 @@ class Menu:
 
     @staticmethod
     def passenger_menu():
-        passenger_action = input("Please choose your action:\n1. Search Route\n2. Report Delay\nYour choice (1 or 2): ")
+        passenger_action = input("Please choose your action:\n1. Search Route\n2. Report Delay\n3. Exit: \n"
+                                 "Your Choice: ")
         return int(passenger_action)
 
     @staticmethod
+    def search_route():
+        pass
+
+    @staticmethod
     def manager_menu():
-        manager_action = input("Please enter your action:\n1. Add Route\n2. Delete Route...")
+        manager_action = input("Please enter your action:\n1. Add Route\n2. Delete Route\n"
+                               "3. Update Route\n4. Add Scheduled Ride\n5. Exit \n"
+                               "Your Choice: ")
         return int(manager_action)
 
     @staticmethod
@@ -30,6 +37,23 @@ class Menu:
     @staticmethod
     def get_destination():
         return str(input("Please insert destination stop: "))
+
+
+    @staticmethod
+    def delete_route():
+        return int(input("What route do you want to delete? "))
+
+    @staticmethod
+    def line_to_update():
+        return int(input("What number of line do you want to update? "))
+
+    @staticmethod
+    def update_route():
+        return input("What do you want to update in this line?\n"
+                         "1. Origin \n"
+                         "2. Destination \n"
+                         "3. List of Stops ")
+
 
 
 
