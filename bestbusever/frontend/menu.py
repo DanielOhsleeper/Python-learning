@@ -1,4 +1,6 @@
 class Menu:
+
+
     @staticmethod
     def main_menu():
         user_role = input("Hello. Please choose your role:\n1. Passenger\n2. Manager\nYour choice (1 or 2): ")
@@ -54,6 +56,9 @@ class Menu:
                          "2. Destination \n"
                          "3. List of Stops ")
 
+    @staticmethod
+    def get_info():
+        return int(input("What line number would you like to update with a new ride? "))
 
 
 

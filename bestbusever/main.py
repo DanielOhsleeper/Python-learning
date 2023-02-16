@@ -5,15 +5,13 @@ from bestbusever.frontend.menu import Menu
 if __name__ == '__main__':
     role = Menu.main_menu()
     best_bus = BestBusCompany()
-    scheduled = ScheduledRide("1", "1", "Vova")
+
     while True:
         if role == 1:
             action = Menu.passenger_menu()
             match action:
                 case 1:
                     print("Searching Route")
-                    sc = scheduled.add_scheduled_ride("1", "1", "Vova")
-                    print(sc)
                 case 2:
                     print("Reporting Delay")
                 case 3:
@@ -60,7 +58,22 @@ if __name__ == '__main__':
                     except Exception as e:
                         print(e)
                 case 4:
-                    print("Adding Scheduled Ride")
+
+                    print(best_bus)
+                    schedule = Menu.get_info()
+                    if line_number != schedule:
+                        print("no such line number")
+                        continue
+                    else:
+                        driver = ScheduledRide.get_driver(ScheduledRide)
+                        origin_time = ScheduledRide.get_origin_time(ScheduledRide)
+                        dest = ScheduledRide.get_dest_time(ScheduledRide)
+                        # new_route = best_bus.start_route(line_number, origin, destination, list_of_stops)
+                        sc = ScheduledRide(origin_time,dest, driver)
+                        print(sc)
+
+                        print(new_route)
+
                 case 5:
                     print("Exiting")
                     break
