@@ -1,26 +1,11 @@
-from bestbusever.backend.bestbus import BestBusCompany
 from bestbusever.frontend.menu import Menu
+from bestbusever.backend.bestbus import BestBusCompany
 
 if __name__ == '__main__':
     role = Menu.main_menu()
     best_bus = BestBusCompany()
-    current_route = {}
     while True:
         if role == 1:
-            action = Menu.passenger_menu()
-            match action:
-                case 1:
-                    srch = Menu.search_by()
-                    line = Menu.get_line_number()
-                    searched_route = best_bus.search_by_line(line)
-                    print(searched_route)
-                    print("Searching Route")
-                case 2:
-                    print("Reporting Delay")
-                case 3:
-                    print("Exiting")
-
-        elif role == 2:
             action = Menu.manager_menu()
             match action:
                 case 1:
@@ -34,7 +19,6 @@ if __name__ == '__main__':
                     except Exception as e:
                         print(e)
                     print(best_bus)
-                    continue
                 case 2:
                     print("Deleting Route by Line number: ")
                     delete = Menu.delete_route()
@@ -50,16 +34,15 @@ if __name__ == '__main__':
                     try:
                         update_val = Menu.update_route()
                         if "1" in update_val:
-                            print(new_route.get(line_number))
                             new_origin = Menu.get_origin()
-                            new_route = best_bus.update_route_info(line_number, new_origin, destination, list_of_stops)
+                            best_bus.update_route_info(line_number, origin=new_origin)
                         if "2" in update_val:
                             new_destination = Menu.get_destination()
-                            new_route = best_bus.updateline(line_number, origin, new_destination, list_of_stops)
+                            best_bus.update_route_info(line_number, destination=new_destination)
                         if "3" in update_val:
                             new_list_of_stops = Menu.get_list_stop()
-                            new_route = best_bus.update_route_info(line_number, origin, destination, new_list_of_stops)
-                        print(current_route)
+                            best_bus.update_route_info(line_number, list_of_stops=new_list_of_stops)
+                        print(best_bus.get_route_by_line(line_number))
                     except Exception as e:
                         print(e)
                 case 4:
@@ -73,7 +56,21 @@ if __name__ == '__main__':
 
                 case 5:
                     print("Exiting")
-                    break
+                    role = Menu.main_menu()
 
+        if role == 2:
+            action = Menu.passenger_menu()
+            match action:
+                case 1:
+                    origin_search = Menu.get_origin()
+                    print(best_bus.search(origin=origin_search))
+                    # need to work on it
+
+                    print("Searching Route")
+                case 2:
+                    print("Reporting Delay")
+                case 3:
+                    print("Exiting")
+                    role = Menu.main_menu()
 
 

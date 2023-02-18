@@ -17,13 +17,18 @@ class BusRoute:
         self._scheduled_rides[ride_id] = scheduled_ride
         return self
 
+    def set_origin(self, new_origin):
+        self._origin = new_origin
+
+    def set_destination(self, new_destination):
+        self._destination = new_destination
+
+    def set_stops(self, stops):
+        self._list_of_stops = stops
+
     def __repr__(self):
         return f"Line number: {self._line_number}\n"\
                f"Origin: {self._origin}\n" \
                f"Destination: {self._destination}\n" \
                f"List of stops: {self._list_of_stops}\n" \
                f"Rides: {self._scheduled_rides}"
-
-
-
-

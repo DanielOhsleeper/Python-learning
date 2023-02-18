@@ -5,7 +5,7 @@ class Menu:
 
     @staticmethod
     def main_menu():
-        user_role = input("Hello. Please choose your role:\n1. Passenger\n2. Manager\nYour choice (1 or 2): ")
+        user_role = input("Hello. Please choose your role:\n1. Manager\n2. Passenger\nYour choice (1 or 2): ")
         return int(user_role)
 
     @staticmethod
@@ -80,5 +80,3 @@ class Menu:
                          "3.Destination \n"
                          "4.Stop \n"
                          " "))
-
-
