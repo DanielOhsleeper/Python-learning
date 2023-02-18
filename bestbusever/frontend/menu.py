@@ -74,9 +74,13 @@ class Menu:
 
     @staticmethod
     def search_by():
-        return int(input("By what do you wanna search?\n"
-                         "1.Line number \n"
-                         "2.Origin \n"
-                         "3.Destination \n"
-                         "4.Stop \n"
-                         " "))
+        return input("By what do you wanna search?\n"
+                         "1.Origin \n"
+                         "2.Destination \n"
+                         "3.Stop \n"
+                         " ")
+
+
+    @staticmethod
+    def get_stop_station():
+        return input("Insert stop station: ")

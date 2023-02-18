@@ -1,5 +1,6 @@
 from bestbusever.backend.bus_route import BusRoute
 
+
 class BestBusCompany:
 
     def __init__(self):
@@ -38,18 +39,22 @@ class BestBusCompany:
             return ret_val
         raise Exception("No such line")
 
+    def search(self, origin=False, destination=False, stop=False):
+        for i in self._routes:
+            for bus_route in [self._routes[i]]:
+                if bus_route.search_by_origin_for_best_bus() == origin or bus_route.search_by_destination_for_best_bus()\
+                        == destination:
+                    return self._routes[i]
+                if stop in bus_route.search_by_stops():
+                    return self._routes[i]
+                else:
+                    raise Exception("No information about this, try again ")
 
-
-    def search(self, origin=False, destination=False, list_of_stops=False):
-        for k, v in self._routes.items():
-            print(self._routes[k])
-    #         need to work on it
-
-
-
-
-
-
+    # def search_stop_station(self):
+    #     for i in self._routes:
+    #         for bus_route in [self._routes[i]]:
+    #             if Menu.get_stop_station() in bus_route.search_by_stops():
+    #                 return self._routes[i]
 
     def __repr__(self):
         return f"{self._routes}"

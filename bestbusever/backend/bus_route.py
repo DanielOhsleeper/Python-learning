@@ -26,6 +26,15 @@ class BusRoute:
     def set_stops(self, stops):
         self._list_of_stops = stops
 
+    def search_by_origin_for_best_bus(self):
+        return self._origin
+
+    def search_by_destination_for_best_bus(self):
+        return self._destination
+
+    def search_by_stops(self):
+        return self._list_of_stops
+
     def __repr__(self):
         return f"Line number: {self._line_number}\n"\
                f"Origin: {self._origin}\n" \

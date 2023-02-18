@@ -62,8 +62,19 @@ if __name__ == '__main__':
             action = Menu.passenger_menu()
             match action:
                 case 1:
-                    origin_search = Menu.get_origin()
-                    print(best_bus.search(origin=origin_search))
+                    srch = Menu.search_by()
+                    try:
+                        if "1" in srch:
+                            origin_search = Menu.get_origin()
+                            print(best_bus.search(origin_search))
+                        elif "2" in srch:
+                            dest_search = Menu.get_destination()
+                            print(best_bus.search(dest_search))
+                        if "3" in srch:
+                            stop = Menu.get_stop_station()
+                            print(best_bus.search(stop))
+                    except Exception as e:
+                        print(e)
                     # need to work on it
 
                     print("Searching Route")
@@ -73,4 +84,11 @@ if __name__ == '__main__':
                     print("Exiting")
                     role = Menu.main_menu()
 
+
+# TODO_list
+# 1.input validations
+# 2.exceptions
+# 3.unittests
+# 4.pickle
+# 5.delays
 
