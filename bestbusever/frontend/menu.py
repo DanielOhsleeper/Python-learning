@@ -1,5 +1,7 @@
-class Menu:
+import datetime
 
+
+class Menu:
 
     @staticmethod
     def main_menu():
@@ -12,9 +14,6 @@ class Menu:
                                  "Your Choice: ")
         return int(passenger_action)
 
-    @staticmethod
-    def search_route():
-        pass
 
     @staticmethod
     def manager_menu():
@@ -34,7 +33,8 @@ class Menu:
 
     @staticmethod
     def get_list_stop():
-        return input("Please insert stop stations separated by comma's: ")
+        stop_list = input("Please insert stop stations separated by comma's: ")
+        return stop_list.split(",")
 
     @staticmethod
     def get_destination():
@@ -44,10 +44,6 @@ class Menu:
     @staticmethod
     def delete_route():
         return int(input("What route do you want to delete? "))
-
-    @staticmethod
-    def line_to_update():
-        return int(input("What number of line do you want to update? "))
 
     @staticmethod
     def update_route():
@@ -60,5 +56,29 @@ class Menu:
     def get_info():
         return int(input("What line number would you like to update with a new ride? "))
 
+    @staticmethod
+    def get_origin_time():
+        o_t = input("Insert origin time in format 'hh-mm':  ")
+        converted_orig = datetime.datetime.strptime(o_t, "%H-%M")
+        return converted_orig.time()
+
+    @staticmethod
+    def get_driver():
+        return input("Driver's Name? ")
+
+    @staticmethod
+    def get_dest_time():
+        d_t = input("Insert destination time in format 'hh-mm':  ")
+        converted_dest = datetime.datetime.strptime(d_t, "%H-%M")
+        return converted_dest.time()
+
+    @staticmethod
+    def search_by():
+        return int(input("By what do you wanna search?\n"
+                         "1.Line number \n"
+                         "2.Origin \n"
+                         "3.Destination \n"
+                         "4.Stop \n"
+                         " "))
 
 
