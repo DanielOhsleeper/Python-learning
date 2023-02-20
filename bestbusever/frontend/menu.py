@@ -1,6 +1,4 @@
 import datetime
-
-
 class Menu:
 
     @staticmethod
@@ -10,7 +8,7 @@ class Menu:
 
     @staticmethod
     def passenger_menu():
-        passenger_action = input("Please choose your action:\n1. Search Route\n2. Report Delay\n3. Exit: \n"
+        passenger_action = input("Please choose your action:\n1. Search Route\n2. Report Delay\n3. Exit to Main Menu: \n"
                                  "Your Choice: ")
         return int(passenger_action)
 
@@ -18,7 +16,7 @@ class Menu:
     @staticmethod
     def manager_menu():
         manager_action = input("Please enter your action:\n1. Add Route\n2. Delete Route\n"
-                               "3. Update Route\n4. Add Scheduled Ride\n5. Exit \n"
+                               "3. Update Route\n4. Add Scheduled Ride\n5. Exit to Main Menu \n"
                                "Your Choice: ")
         return int(manager_action)
 
@@ -78,9 +76,17 @@ class Menu:
                          "1.Origin \n"
                          "2.Destination \n"
                          "3.Stop \n"
-                         " ")
+                         "4.Line number \n"
+                     "")
 
 
     @staticmethod
     def get_stop_station():
         return input("Insert stop station: ")
+
+    @staticmethod
+    def pass_acc():
+        return input("Please Insert your password: ")
+
+
+

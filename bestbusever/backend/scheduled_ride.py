@@ -11,7 +11,9 @@ class ScheduledRide:
                f"Origin Time: {self._origin_time}\n" \
                f"Destination Time: {self._destination_time}\n"
 
+
     def __repr__(self):
         return f"Id: {self._id}\n" \
-               f"Origin Time: {self._origin_time}\n" \
-               f"Destination Time: {self._destination_time}\n"
+           f"Origin Time: {self._origin_time}\n" \
+           f"Destination Time: {self._destination_time}\n" \
+           f"Delays: {self._delays}\n"

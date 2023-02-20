@@ -37,24 +37,23 @@ class BestBusCompany:
         ret_val = self._routes.get(line_number)
         if ret_val:
             return ret_val
-        raise Exception("No such line")
+        raise Exception("Line number does not exist")
 
-    def search(self, origin=False, destination=False, stop=False):
+    def search(self, origin=False, destination=False):
         for i in self._routes:
             for bus_route in [self._routes[i]]:
                 if bus_route.search_by_origin_for_best_bus() == origin or bus_route.search_by_destination_for_best_bus()\
                         == destination:
                     return self._routes[i]
-                if stop in bus_route.search_by_stops():
-                    return self._routes[i]
-                else:
-                    raise Exception("No information about this, try again ")
+        raise Exception("Information does not exist, try again")
 
-    # def search_stop_station(self):
-    #     for i in self._routes:
-    #         for bus_route in [self._routes[i]]:
-    #             if Menu.get_stop_station() in bus_route.search_by_stops():
-    #                 return self._routes[i]
+
+    def search_by_stop(self, stop):
+        for i in self._routes:
+            for bus_routes in [self._routes[i]]:
+                if stop in bus_routes.search_by_stops():
+                    return self._routes[i]
+        raise Exception("Information does not exist, try again")
 
     def __repr__(self):
         return f"{self._routes}"
