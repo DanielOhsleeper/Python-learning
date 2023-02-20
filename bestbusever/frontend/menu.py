@@ -1,17 +1,20 @@
 import datetime
+
+
 class Menu:
 
     @staticmethod
     def main_menu():
-        user_role = input("Hello. Please choose your role:\n1. Manager\n2. Passenger\nYour choice (1 or 2): ")
+        user_role = input("Hello. Please choose your role:\n1. Manager\n2. Passenger\n 3. Exit\n Your choice (1,"
+                          "2 or 3): ")
         return int(user_role)
 
     @staticmethod
     def passenger_menu():
-        passenger_action = input("Please choose your action:\n1. Search Route\n2. Report Delay\n3. Exit to Main Menu: \n"
+        passenger_action = input("Please choose your action:\n1. Search Route\n2. Report Delay\n3. Exit to Main Menu: "
+                                 "\n "
                                  "Your Choice: ")
         return int(passenger_action)
-
 
     @staticmethod
     def manager_menu():
@@ -23,7 +26,6 @@ class Menu:
     @staticmethod
     def get_line_number():
         return int(input("Please enter the line number: ").strip())
-
 
     @staticmethod
     def get_origin():
@@ -38,7 +40,6 @@ class Menu:
     def get_destination():
         return str(input("Please insert destination stop: "))
 
-
     @staticmethod
     def delete_route():
         return int(input("What route do you want to delete? "))
@@ -46,9 +47,9 @@ class Menu:
     @staticmethod
     def update_route():
         return input("What do you want to update in this line?\n"
-                         "1. Origin \n"
-                         "2. Destination \n"
-                         "3. List of Stops ")
+                     "1. Origin \n"
+                     "2. Destination \n"
+                     "3. List of Stops ")
 
     @staticmethod
     def get_info():
@@ -73,12 +74,11 @@ class Menu:
     @staticmethod
     def search_by():
         return input("By what do you wanna search?\n"
-                         "1.Origin \n"
-                         "2.Destination \n"
-                         "3.Stop \n"
-                         "4.Line number \n"
+                     "1.Origin \n"
+                     "2.Destination \n"
+                     "3.Stop \n"
+                     "4.Line number \n"
                      "")
-
 
     @staticmethod
     def get_stop_station():
@@ -87,6 +87,3 @@ class Menu:
     @staticmethod
     def pass_acc():
         return input("Please Insert your password: ")
-
-
-

@@ -6,6 +6,12 @@ class BestBusCompany:
     def __init__(self):
         self._routes: dict[int, BusRoute] = {}
 
+
+    def id_val(self, line_number):
+        ret_val = self._routes[line_number]
+    #   to be continued
+
+
     def start_route(self, line_number, origin, destination, list_of_stops):
         new_route = BusRoute(line_number, origin, destination, list_of_stops)
         if line_number not in self._routes:
@@ -46,7 +52,6 @@ class BestBusCompany:
                         == destination:
                     return self._routes[i]
         raise Exception("Information does not exist, try again")
-
 
     def search_by_stop(self, stop):
         for i in self._routes:
