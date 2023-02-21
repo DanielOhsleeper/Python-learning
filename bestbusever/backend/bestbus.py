@@ -6,17 +6,35 @@ class BestBusCompany:
     def __init__(self):
         self._routes: dict[int, BusRoute] = {}
 
+    def show_scheduled_rides_by_line(self, line_number):
+        ret_val = self._routes.get(line_number)
+        return ret_val.get_ride()
 
-    def id_val(self, line_number):
-        ret_val = self._routes[line_number]
-    #   to be continued
+    def show_ride_id_info(self, line_number, id_by_passenger):
+        id_info = BestBusCompany.show_scheduled_rides_by_line(self, line_number)
+        return id_info[id_by_passenger]
+
+    def update_delay(self, line_number, id_by_passenger):
+        delay_updated = BestBusCompany.show_ride_id_info(self, line_number, id_by_passenger)
+        if delay_updated:
+            return delay_updated["Delays"]
+
+
+
+    def get_line(self, line_number):
+        if self._routes.get(line_number):
+            return self
+        else:
+            raise Exception("***No information about this line***")
 
 
     def start_route(self, line_number, origin, destination, list_of_stops):
         new_route = BusRoute(line_number, origin, destination, list_of_stops)
         if line_number not in self._routes:
             self._routes[line_number] = new_route
-        return self._routes
+            return self._routes
+        raise Exception("Line number already occupied")
+
 
     def delete_ride(self, delete):
         if delete in self._routes:

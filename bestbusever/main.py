@@ -1,4 +1,6 @@
 import pickle
+
+from bestbusever.backend.scheduled_ride import ScheduledRide
 from bestbusever.frontend.menu import Menu
 from bestbusever.backend.bestbus import BestBusCompany
 import os
@@ -63,13 +65,16 @@ if __name__ == '__main__':
                     except Exception as e:
                         print(e)
                 case 4:
+                    try:
                         line_number = Menu.get_line_number()
-                        if line_number in new_route.keys():
-                            print(new_route.get(line_number))
+                        print(best_bus.get_line(line_number))
                         driver = Menu.get_driver()
                         origin_time = Menu.get_origin_time()
                         dest = Menu.get_dest_time()
+                        print(best_bus)
                         print(best_bus.add_sched_to_route(line_number, origin_time, dest, driver))
+                    except Exception as e:
+                        print(e)
                 case 5:
                     print("Exit to Main Menu")
                     role = Menu.main_menu()
@@ -96,8 +101,16 @@ if __name__ == '__main__':
                 case 2:
                     print("Reporting Delay")
                     line_number = Menu.get_line_number()
-                    print(best_bus.id_val(line_number))
-                    # print(best_bus.get_route_by_line(line_number))
+                    print(best_bus.show_scheduled_rides_by_line(line_number))
+                    id_by_passenger = Menu.ride_id_to_delay()
+
+                    id_info = best_bus.show_ride_id_info(line_number, id_by_passenger)
+
+                    blabla = ScheduledRide(destination_time=True, driver_name=True, origin_time=True)
+                    print(blabla.update())
+                    print(id_info)
+
+                    # print(best_bus.update_delay(line_number, id_by_passenger))
                 case 3:
                     print("Exit to Main Menu")
                     role = Menu.main_menu()

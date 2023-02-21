@@ -87,3 +87,7 @@ class Menu:
     @staticmethod
     def pass_acc():
         return input("Please Insert your password: ")
+
+    @staticmethod
+    def ride_id_to_delay():
+        return int(input("Please Enter ID, that you want to report about: "))

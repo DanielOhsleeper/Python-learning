@@ -9,6 +9,8 @@ class BusRoute:
         self._list_of_stops = list_of_stops
         self._scheduled_rides = {}
 
+    def get_ride(self):
+        return self._scheduled_rides
 
     def add_scheduled_ride(self, origin_time, destination_time, driver):
         ride_id = random.randint(1, 1000)
@@ -17,8 +19,6 @@ class BusRoute:
         scheduled_ride = ScheduledRide(origin_time, destination_time, driver)
         self._scheduled_rides[ride_id] = scheduled_ride
         return self._scheduled_rides
-
-
 
 
     def set_origin(self, new_origin):
