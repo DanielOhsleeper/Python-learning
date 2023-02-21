@@ -1,6 +1,4 @@
 import pickle
-
-from bestbusever.backend.scheduled_ride import ScheduledRide
 from bestbusever.frontend.menu import Menu
 from bestbusever.backend.bestbus import BestBusCompany
 import os
@@ -11,7 +9,10 @@ if __name__ == '__main__':
     else:
         with open('best_bus.pickle', 'rb') as fh:
             best_bus = pickle.load(fh)
-    role = Menu.main_menu()
+    try:
+        role = Menu.main_menu()
+    except Exception as e:
+        print("Error", e)
     password = "r"
     flag = False
     while True:
@@ -29,11 +30,11 @@ if __name__ == '__main__':
             match action:
                 case 1:
                     print("Adding a new route")
-                    line_number = Menu.get_line_number()
-                    origin = Menu.get_origin()
-                    destination = Menu.get_destination()
-                    list_of_stops = Menu.get_list_stop()
                     try:
+                        line_number = Menu.get_line_number()
+                        origin = Menu.get_origin()
+                        destination = Menu.get_destination()
+                        list_of_stops = Menu.get_list_stop()
                         new_route = best_bus.start_route(line_number, origin, destination, list_of_stops)
                     except Exception as e:
                         print(e)
@@ -100,17 +101,15 @@ if __name__ == '__main__':
                         print(e)
                 case 2:
                     print("Reporting Delay")
-                    line_number = Menu.get_line_number()
-                    print(best_bus.show_scheduled_rides_by_line(line_number))
-                    id_by_passenger = Menu.ride_id_to_delay()
-
-                    id_info = best_bus.show_ride_id_info(line_number, id_by_passenger)
-
-                    blabla = ScheduledRide(destination_time=True, driver_name=True, origin_time=True)
-                    print(blabla.update())
-                    print(id_info)
-
-                    # print(best_bus.update_delay(line_number, id_by_passenger))
+                    try:
+                        line_number = Menu.get_line_number()
+                        print(best_bus.show_scheduled_rides_by_line(line_number))
+                        id_by_passenger = Menu.ride_id_to_delay()
+                        best_bus.update_delay(int(line_number), int(id_by_passenger))
+                        print("Done with update")
+                        print(best_bus.show_scheduled_rides_by_line(line_number))
+                    except Exception as e:
+                        print(e)
                 case 3:
                     print("Exit to Main Menu")
                     role = Menu.main_menu()
@@ -123,4 +122,4 @@ if __name__ == '__main__':
 # 2.exceptions
 # 3.unittests
 # 4.pickle +
-# 5.delays
+# 5.delays +

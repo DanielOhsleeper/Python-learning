@@ -12,6 +12,9 @@ class BusRoute:
     def get_ride(self):
         return self._scheduled_rides
 
+
+
+
     def add_scheduled_ride(self, origin_time, destination_time, driver):
         ride_id = random.randint(1, 1000)
         if self._scheduled_rides.get(ride_id):
@@ -45,3 +48,4 @@ class BusRoute:
                f"Destination: {self._destination}\n" \
                f"List of stops: {self._list_of_stops}\n" \
                f"Rides: {self._scheduled_rides}"
+

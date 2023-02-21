@@ -7,9 +7,9 @@ class ScheduledRide:
         self._id = ""
         self._delays = 0
 
+
     def update(self):
         self._delays += 1
-        return self._delays
 
 
     def __str__(self):
@@ -24,3 +24,8 @@ class ScheduledRide:
            f"Destination Time: {self._destination_time}\n" \
            f"Delays: {self._delays}\n"
 
+
+# dela = ScheduledRide(11,22, "dada")
+# print(dela)
+# dela.dll()
+# print(dela)

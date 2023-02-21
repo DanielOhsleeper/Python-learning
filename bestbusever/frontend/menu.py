@@ -3,15 +3,21 @@ import datetime
 
 class Menu:
 
+
     @staticmethod
     def main_menu():
-        user_role = input("Hello. Please choose your role:\n1. Manager\n2. Passenger\n 3. Exit\n Your choice (1,"
-                          "2 or 3): ")
-        return int(user_role)
+        try:
+            user_role = input("Hello. Please choose your role:\n1. Manager\n2. Passenger\n 3. Exit\n Your choice (1,"
+                              "2 or 3): ")
+
+            return int(user_role)
+        except Exception as e:
+            print("Invalid input, try again", e)
+
 
     @staticmethod
     def passenger_menu():
-        passenger_action = input("Please choose your action:\n1. Search Route\n2. Report Delay\n3. Exit to Main Menu: "
+        passenger_action = input("Please choose your action:\n1. Search Route\n2. Report Delay\n3. Back to Main Menu: "
                                  "\n "
                                  "Your Choice: ")
         return int(passenger_action)
@@ -19,7 +25,7 @@ class Menu:
     @staticmethod
     def manager_menu():
         manager_action = input("Please enter your action:\n1. Add Route\n2. Delete Route\n"
-                               "3. Update Route\n4. Add Scheduled Ride\n5. Exit to Main Menu \n"
+                               "3. Update Route\n4. Add Scheduled Ride\n5. Back to Main Menu \n"
                                "Your Choice: ")
         return int(manager_action)
 
@@ -34,7 +40,7 @@ class Menu:
     @staticmethod
     def get_list_stop():
         stop_list = input("Please insert stop stations separated by comma's: ")
-        return stop_list.split(",")
+        return stop_list.strip()
 
     @staticmethod
     def get_destination():
@@ -58,18 +64,26 @@ class Menu:
     @staticmethod
     def get_origin_time():
         o_t = input("Insert origin time in format 'hh-mm':  ")
-        converted_orig = datetime.datetime.strptime(o_t, "%H-%M")
-        return converted_orig.time()
+        try:
+            converted_orig = datetime.datetime.strptime(o_t, "%H-%M")
+            return converted_orig.time()
+        except Exception:
+            print("Wrong date format")
+
 
     @staticmethod
     def get_driver():
-        return input("Driver's Name? ")
+        return input("Please insert Driver's name: ")
 
     @staticmethod
     def get_dest_time():
         d_t = input("Insert destination time in format 'hh-mm':  ")
-        converted_dest = datetime.datetime.strptime(d_t, "%H-%M")
-        return converted_dest.time()
+        try:
+            converted_dest = datetime.datetime.strptime(d_t, "%H-%M")
+            return converted_dest.time()
+        except Exception:
+            print("Wrong time format")
+
 
     @staticmethod
     def search_by():

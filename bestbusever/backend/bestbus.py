@@ -8,18 +8,21 @@ class BestBusCompany:
 
     def show_scheduled_rides_by_line(self, line_number):
         ret_val = self._routes.get(line_number)
+        if ret_val not in self._routes:
+            raise Exception("Line number not found")
         return ret_val.get_ride()
+
+
 
     def show_ride_id_info(self, line_number, id_by_passenger):
         id_info = BestBusCompany.show_scheduled_rides_by_line(self, line_number)
         return id_info[id_by_passenger]
 
     def update_delay(self, line_number, id_by_passenger):
-        delay_updated = BestBusCompany.show_ride_id_info(self, line_number, id_by_passenger)
-        if delay_updated:
-            return delay_updated["Delays"]
-
-
+        route_to_update = self._routes.get(line_number)
+        scheduled_rides_for_route = route_to_update.get_ride()
+        scheduled_rides_for_route[id_by_passenger].update()
+        raise Exception("no info")
 
     def get_line(self, line_number):
         if self._routes.get(line_number):
