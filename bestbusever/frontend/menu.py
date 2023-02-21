@@ -7,12 +7,14 @@ class Menu:
     @staticmethod
     def main_menu():
         try:
-            user_role = input("Hello. Please choose your role:\n1. Manager\n2. Passenger\n 3. Exit\n Your choice (1,"
-                              "2 or 3): ")
-
+            user_role = int(input("Hello. Please choose your role:\n1. Manager\n2. Passenger\n 3. Exit\n Your choice (1,"
+                              "2 or 3): "))
             return int(user_role)
-        except Exception as e:
-            print("Invalid input, try again", e)
+        except Exception:
+            print("Invalid input")
+
+
+
 
 
     @staticmethod
@@ -24,10 +26,11 @@ class Menu:
 
     @staticmethod
     def manager_menu():
-        manager_action = input("Please enter your action:\n1. Add Route\n2. Delete Route\n"
-                               "3. Update Route\n4. Add Scheduled Ride\n5. Back to Main Menu \n"
-                               "Your Choice: ")
-        return int(manager_action)
+            manager_action = input("Please enter your action:\n1. Add Route\n2. Delete Route\n"
+                                   "3. Update Route\n4. Add Scheduled Ride\n5. Back to Main Menu \n"
+                                   "Your Choice: ")
+            return int(manager_action)
+
 
     @staticmethod
     def get_line_number():

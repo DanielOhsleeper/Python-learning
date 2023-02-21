@@ -108,8 +108,8 @@ if __name__ == '__main__':
                         best_bus.update_delay(int(line_number), int(id_by_passenger))
                         print("Done with update")
                         print(best_bus.show_scheduled_rides_by_line(line_number))
-                    except Exception as e:
-                        print(e)
+                    except Exception:
+                        print("Information doesn't exist")
                 case 3:
                     print("Exit to Main Menu")
                     role = Menu.main_menu()
@@ -118,8 +118,4 @@ if __name__ == '__main__':
                 pickle.dump(best_bus, fh)
             exit()
 
-# TODO_list
-# 2.exceptions
-# 3.unittests
-# 4.pickle +
-# 5.delays +
+

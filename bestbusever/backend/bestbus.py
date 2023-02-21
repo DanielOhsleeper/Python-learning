@@ -1,6 +1,5 @@
 from bestbusever.backend.bus_route import BusRoute
 
-
 class BestBusCompany:
 
     def __init__(self):
@@ -8,11 +7,9 @@ class BestBusCompany:
 
     def show_scheduled_rides_by_line(self, line_number):
         ret_val = self._routes.get(line_number)
-        if ret_val not in self._routes:
+        if ret_val is None:
             raise Exception("Line number not found")
         return ret_val.get_ride()
-
-
 
     def show_ride_id_info(self, line_number, id_by_passenger):
         id_info = BestBusCompany.show_scheduled_rides_by_line(self, line_number)
@@ -21,8 +18,11 @@ class BestBusCompany:
     def update_delay(self, line_number, id_by_passenger):
         route_to_update = self._routes.get(line_number)
         scheduled_rides_for_route = route_to_update.get_ride()
-        scheduled_rides_for_route[id_by_passenger].update()
-        raise Exception("no info")
+        if scheduled_rides_for_route[id_by_passenger] is None:
+            raise Exception("no info")
+        else:
+            scheduled_rides_for_route[id_by_passenger].update()
+
 
     def get_line(self, line_number):
         if self._routes.get(line_number):

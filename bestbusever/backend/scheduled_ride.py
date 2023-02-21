@@ -25,7 +25,3 @@ class ScheduledRide:
            f"Delays: {self._delays}\n"
 
 
-# dela = ScheduledRide(11,22, "dada")
-# print(dela)
-# dela.dll()
-# print(dela)
