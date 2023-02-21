@@ -15,9 +15,9 @@ class BestBusCompany:
         return id_info[id_by_passenger]
 
     def update_delay(self, line_number, id_by_passenger):
-        delay_updated = BestBusCompany.show_ride_id_info(self, line_number, id_by_passenger)
-        if delay_updated:
-            return delay_updated["Delays"]
+        route_to_update = self._routes.get(line_number)
+        scheduled_rides_for_route = route_to_update.get_ride()
+        scheduled_rides_for_route[id_by_passenger].update()
 
 
 
