@@ -103,14 +103,9 @@ if __name__ == '__main__':
                     line_number = Menu.get_line_number()
                     print(best_bus.show_scheduled_rides_by_line(line_number))
                     id_by_passenger = Menu.ride_id_to_delay()
-
-                    id_info = best_bus.show_ride_id_info(line_number, id_by_passenger)
-
-                    blabla = ScheduledRide(destination_time=True, driver_name=True, origin_time=True)
-                    print(blabla.update())
-                    print(id_info)
-
-                    # print(best_bus.update_delay(line_number, id_by_passenger))
+                    best_bus.update_delay(int(line_number), int(id_by_passenger))
+                    print("Done with update")
+                    print(best_bus.show_scheduled_rides_by_line(line_number))
                 case 3:
                     print("Exit to Main Menu")
                     role = Menu.main_menu()
