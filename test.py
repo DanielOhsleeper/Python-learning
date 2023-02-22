@@ -1,0 +1,1 @@
+print("Hello Daniel ah sheli yakar")
