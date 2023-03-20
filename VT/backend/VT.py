@@ -11,15 +11,15 @@ class VirusTotal():
     endpoint = base64.urlsafe_b64encode("http://www.aronovich.co.il/".encode()).decode().strip("=")
 
     def __init__(self, user_url):
-        self.user_url = "https://aronovich.co.il/"
+        self.user_url = user_url
 
     def scan(self):
         encoded_url = quote(self.user_url, safe="")
         payload = f"url={encoded_url}"
-        response = requests.post(self.user_url, data=payload, headers=VirusTotal.headers)
-        return response.text
+        response = requests.post(VirusTotal.url, data=payload, headers=VirusTotal.headers)
+        return response.content
 
-    def get_url_analysis(self, user_url):
+    def get_url_analysis(self):
         url_id = base64.urlsafe_b64encode(self.user_url.encode()).decode().strip("=")
         url = f"https://www.virustotal.com/api/v3/urls/{url_id}"
         response = requests.get(url, headers=VirusTotal.headers)
