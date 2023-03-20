@@ -1,6 +1,13 @@
-from VT.backend import Scanner
-from VT.backend.Get_report import Report
-
+import pprint
+from VT.backend.VT import VirusTotal
 if __name__ == '__main__':
-    g = Report("https://www.virustotal.com/api/v3/urls/")
-    print(g.get_status_code())
+    vt = VirusTotal("https://aronovich.co.il/")
+    try:
+        res = vt.get_url_analysis("https://aronovich.co.il/")
+        pprint.pprint(res)
+
+    except ConnectionError:
+        vt.scan()
+    except Exception as e:
+        print(e)
+
